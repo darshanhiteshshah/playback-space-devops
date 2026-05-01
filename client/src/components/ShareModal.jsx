@@ -40,50 +40,50 @@ function ShareModal({ isOpen, onClose, url, title }) {
     };
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
-                <h3 className="text-xl font-bold mb-6 text-white text-center">Share to</h3>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-white/70 backdrop-blur-sm">
+            <div className="bg-white border border-gray-200 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
+                <h3 className="text-xl font-bold mb-6 text-gray-900 text-center">Share to</h3>
                 <button 
                     onClick={onClose}
-                    className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+                    className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 transition-colors"
                 >
                     <X size={20} />
                 </button>
                 
                 <div className="grid grid-cols-5 gap-4">
                     <button onClick={() => handleShare('copy')} className="flex flex-col items-center gap-2 group">
-                        <div className="p-3 bg-gray-800 rounded-full group-hover:bg-gray-700 transition-colors">
-                            <Copy size={24} className="text-white" />
+                        <div className="p-3 bg-gray-200 rounded-full group-hover:bg-gray-300 transition-colors">
+                            <Copy size={24} className="text-gray-900" />
                         </div>
-                        <span className="text-xs text-gray-400 group-hover:text-white">Copy</span>
+                        <span className="text-xs text-gray-600 group-hover:text-gray-900">Copy</span>
                     </button>
                     
                     <button onClick={() => handleShare('whatsapp')} className="flex flex-col items-center gap-2 group">
-                        <div className="p-3 bg-gray-800 rounded-full group-hover:bg-[#25D366] transition-colors">
-                            <MessageCircle size={24} className="text-white" />
+                        <div className="p-3 bg-gray-200 rounded-full group-hover:bg-[#25D366] transition-colors">
+                            <MessageCircle size={24} className="text-gray-900" />
                         </div>
-                        <span className="text-xs text-gray-400 group-hover:text-white">WhatsApp</span>
+                        <span className="text-xs text-gray-600 group-hover:text-gray-900">WhatsApp</span>
                     </button>
 
                     <button onClick={() => handleShare('twitter')} className="flex flex-col items-center gap-2 group">
-                        <div className="p-3 bg-gray-800 rounded-full group-hover:bg-[#1DA1F2] transition-colors">
-                            <Twitter size={24} className="text-white" />
+                        <div className="p-3 bg-gray-200 rounded-full group-hover:bg-[#1DA1F2] transition-colors">
+                            <Twitter size={24} className="text-gray-900" />
                         </div>
-                        <span className="text-xs text-gray-400 group-hover:text-white">Twitter</span>
+                        <span className="text-xs text-gray-600 group-hover:text-gray-900">Twitter</span>
                     </button>
                     
                     <button onClick={() => handleShare('facebook')} className="flex flex-col items-center gap-2 group">
-                        <div className="p-3 bg-gray-800 rounded-full group-hover:bg-[#4267B2] transition-colors">
-                            <Facebook size={24} className="text-white" />
+                        <div className="p-3 bg-gray-200 rounded-full group-hover:bg-[#4267B2] transition-colors">
+                            <Facebook size={24} className="text-gray-900" />
                         </div>
-                        <span className="text-xs text-gray-400 group-hover:text-white">Facebook</span>
+                        <span className="text-xs text-gray-600 group-hover:text-gray-900">Facebook</span>
                     </button>
                     
                     <button onClick={() => handleShare('linkedin')} className="flex flex-col items-center gap-2 group">
-                        <div className="p-3 bg-gray-800 rounded-full group-hover:bg-[#0077b5] transition-colors">
-                            <Linkedin size={24} className="text-white" />
+                        <div className="p-3 bg-gray-200 rounded-full group-hover:bg-[#0077b5] transition-colors">
+                            <Linkedin size={24} className="text-gray-900" />
                         </div>
-                        <span className="text-xs text-gray-400 group-hover:text-white">LinkedIn</span>
+                        <span className="text-xs text-gray-600 group-hover:text-gray-900">LinkedIn</span>
                     </button>
                 </div>
             </div>

@@ -53,20 +53,20 @@ function Login() {
     }
 
     return (
-        <div className='flex items-center justify-center min-h-screen bg-black text-white p-4'>
+        <div className='flex items-center justify-center min-h-screen bg-gray-50 text-gray-900 p-4'>
             <Toaster position='top-center' reverseOrder={false} />
-            <div className='w-full max-w-lg bg-gray-900 rounded-xl p-10 border border-gray-800 shadow-xl'>
+            <div className='w-full max-w-lg bg-white rounded-xl p-10 border border-gray-200 shadow-xl'>
                 <div className="mb-6 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
                         <Logo width="100%" />
                     </span>
                 </div>
                 <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
-                <p className="mt-2 text-center text-base text-gray-400">
+                <p className="mt-2 text-center text-base text-gray-600">
                     Don&apos;t have any account?&nbsp;
                     <Link
                         to="/signup"
-                        className="font-medium text-purple-500 transition-all duration-200 hover:underline"
+                        className="font-medium text-blue-500 transition-all duration-200 hover:underline"
                     >
                         Sign Up
                     </Link>
@@ -90,7 +90,7 @@ function Login() {
                             })}
                         />
                          <div className="flex justify-end">
-                            <Link to="/forgot-password" className="text-sm text-gray-400 hover:text-purple-500 transition-colors">
+                            <Link to="/forgot-password" className="text-sm text-gray-600 hover:text-blue-500 transition-colors">
                                 Forgot password?
                             </Link>
                         </div>

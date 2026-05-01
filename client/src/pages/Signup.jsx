@@ -51,20 +51,20 @@ function Signup() {
     }
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-black text-white p-4">
+        <div className="flex items-center justify-center min-h-screen bg-gray-50 text-gray-900 p-4">
             <Toaster position='top-center' reverseOrder={false} />
-            <div className={`w-full max-w-lg bg-gray-900 rounded-xl p-10 border border-gray-800 shadow-xl`}>
+            <div className={`w-full max-w-lg bg-white rounded-xl p-10 border border-gray-200 shadow-xl`}>
                 <div className="mb-6 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
                         <Logo width="100%" />
                     </span>
                 </div>
                 <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
-                <p className="mt-2 text-center text-base text-gray-400">
+                <p className="mt-2 text-center text-base text-gray-600">
                     Already have an account?&nbsp;
                     <Link
                         to="/login"
-                        className="font-medium text-purple-500 transition-all duration-200 hover:underline"
+                        className="font-medium text-blue-500 transition-all duration-200 hover:underline"
                     >
                         Sign In
                     </Link>
@@ -110,7 +110,7 @@ function Signup() {
                          <Input
                             label="Avatar: "
                             type="file"
-                            className="bg-gray-800"
+                            className="bg-gray-100"
                             accept="image/png, image/jpg, image/jpeg, image/gif"
                             {...register("avatar", {
                                 required: true,

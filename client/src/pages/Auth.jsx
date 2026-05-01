@@ -12,7 +12,7 @@ import { BASE_URL } from '../constants';
 
 // Modern animated background component
 const ModernBackground = () => (
-  <div className="absolute inset-0 overflow-hidden bg-gray-900">
+  <div className="absolute inset-0 overflow-hidden bg-gray-50">
     <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
     
     {/* Animated geometric shapes */}
@@ -20,7 +20,7 @@ const ModernBackground = () => (
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 0.4, scale: 1, rotate: 360 }}
       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-[100px]"
+      className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/30 rounded-full blur-[100px]"
     />
     <motion.div 
       initial={{ opacity: 0, scale: 0.5 }}
@@ -132,11 +132,11 @@ function Auth() {
   };
 
   return (
-    <div className="flex min-h-screen bg-black text-white relative overflow-hidden">
+    <div className="flex min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-900 relative overflow-hidden">
       <Toaster position='top-center' reverseOrder={false} />
       
       {/* Left Side: Modern Motion Graphics */}
-      <div className="hidden lg:flex w-1/2 relative bg-gray-900 items-center justify-center overflow-hidden">
+      <div className="hidden lg:flex w-1/2 relative bg-white items-center justify-center overflow-hidden">
         <ModernBackground />
         
         {/* Central Content with Motion */}
@@ -144,7 +144,7 @@ function Auth() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10 p-12 backdrop-blur-xl bg-black/30 rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center text-center max-w-lg"
+          className="relative z-10 p-12 backdrop-blur-xl bg-white/80 rounded-3xl border border-gray-200 shadow-2xl flex flex-col items-center text-center max-w-lg"
         >
             <motion.div
               animate={{ scale: [1, 1.05, 1] }}
@@ -154,13 +154,13 @@ function Auth() {
               <img src="/Logo_Playback_Space.png" alt="PlaybackSpace Logo" className="h-24 w-auto" />
             </motion.div>
             
-            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent pb-2">
+            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-600 bg-clip-text text-transparent pb-2">
                PlaybackSpace
             </h1>
-            <h2 className='text-2xl font-medium text-white mb-6'>
+            <h2 className='text-2xl font-medium text-gray-900 mb-6'>
                 Stream. Share. Connect.
             </h2>
-            <p className='text-gray-400 text-lg leading-relaxed'>
+            <p className='text-gray-600 text-lg leading-relaxed'>
                 Experience the next generation of video streaming. <br/>
                 Join our community of creators and viewers today.
             </p>
@@ -168,18 +168,18 @@ function Auth() {
       </div>
 
       {/* Right Side: Auth Container */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-8 relative bg-black lg:bg-transparent">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-8 relative bg-gradient-to-br from-blue-50 to-indigo-100 lg:bg-transparent">
         
         {/* Mobile Background & Logo */}
         <div className="lg:hidden absolute inset-0 z-0">
             <ModernBackground />
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+            <div className="absolute inset-0 bg-white/60 backdrop-blur-sm"></div>
         </div>
 
-        <div className="w-full max-w-md relative z-10 bg-black/40 lg:bg-transparent sm:backdrop-blur-none backdrop-blur-md p-6 sm:p-0 rounded-2xl border border-white/10 lg:border-none shadow-2xl lg:shadow-none">
+        <div className="w-full max-w-md relative z-10 bg-white/80 lg:bg-transparent sm:backdrop-blur-none backdrop-blur-md p-6 sm:p-0 rounded-2xl border border-gray-200 lg:border-none shadow-2xl lg:shadow-none">
             
             <div className="mb-6">
-                <Link to="/" className="inline-flex items-center text-sm text-gray-400 hover:text-white transition-colors">
+                <Link to="/" className="inline-flex items-center text-sm text-gray-600 hover:text-blue-600 transition-colors">
                     <ArrowLeft size={16} className="mr-2" /> Back to Home
                 </Link>
             </div>
@@ -189,23 +189,23 @@ function Auth() {
                 <div className="mb-0">
                   <img src="/Logo_Playback_Space.png" alt="PlaybackSpace Logo" className="h-16 w-auto" />
                 </div>
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent pb-1">PlaybackSpace</h2>
+                <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent pb-1">PlaybackSpace</h2>
             </div>
 
             {/* Toggle Switch */}
-            <div className="flex mb-8 bg-gray-900/80 backdrop-blur-md p-1 rounded-full relative border border-white/10">
+            <div className="flex mb-8 bg-white/80 backdrop-blur-md p-1 rounded-full relative border border-gray-200">
                  <div 
-                    className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${isLogin ? 'left-1' : 'left-[calc(50%+4px)]'}`}
+                    className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-blue-600 rounded-full transition-all duration-300 ease-in-out ${isLogin ? 'left-1' : 'left-[calc(50%+4px)]'}`}
                  ></div>
                  <button 
                     onClick={toggleAuthMode}
-                    className={`w-1/2 text-center py-2 z-10 transition-colors duration-300 font-medium ${isLogin ? 'text-white' : 'text-gray-400 hover:text-white'}`}
+                    className={`w-1/2 text-center py-2 z-10 transition-colors duration-300 font-medium ${isLogin ? 'text-gray-900' : 'text-gray-600 hover:text-blue-600'}`}
                  >
                     Sign In
                  </button>
                  <button 
                     onClick={toggleAuthMode}
-                    className={`w-1/2 text-center py-2 z-10 transition-colors duration-300 font-medium ${!isLogin ? 'text-white' : 'text-gray-400 hover:text-white'}`}
+                    className={`w-1/2 text-center py-2 z-10 transition-colors duration-300 font-medium ${!isLogin ? 'text-gray-900' : 'text-gray-600 hover:text-blue-600'}`}
                  >
                     Sign Up
                  </button>
@@ -219,7 +219,7 @@ function Auth() {
                 >
                     <div className="text-center mb-8">
                         <h2 className="text-2xl font-bold">Welcome Back</h2>
-                        <p className="text-gray-400 mt-2">Enter your credentials to access your account</p>
+                        <p className="text-gray-600 mt-2">Enter your credentials to access your account</p>
                     </div>
                     <form onSubmit={loginForm.handleSubmit(handleLogin)} className='space-y-5'>
                         <Input
@@ -234,7 +234,7 @@ function Auth() {
                              {...loginForm.register("password", { required: "Password is required" })}
                         />
                         <div className='flex justify-end'>
-                            <Link to="/forgot-password" className='text-sm text-purple-400 hover:text-purple-300'>Forgot password?</Link>
+                            <Link to="/forgot-password" className='text-sm text-blue-600 hover:text-blue-800'>Forgot password?</Link>
                         </div>
                         <Button type="submit" className="w-full h-11" disabled={isLoading}>
                             {isLoading ? "Signing in..." : "Sign In"}

@@ -86,8 +86,8 @@ function ForgotPassword() {
     };
 
     return (
-        <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
-             <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 w-full max-w-md shadow-2xl">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-900 flex items-center justify-center p-4">
+             <div className="bg-white border border-gray-200 rounded-2xl p-8 w-full max-w-md shadow-2xl">
                  <div className="text-center mb-8">
                      <img src="/Logo_Playback_Space.png" alt="Logo" className="h-12 mx-auto mb-4" />
                      <h2 className="text-2xl font-bold">
@@ -95,7 +95,7 @@ function ForgotPassword() {
                         {step === 2 && "Verification"}
                         {step === 3 && "Reset Password"}
                      </h2>
-                     <p className="text-gray-400 text-sm mt-2">
+                     <p className="text-gray-600 text-sm mt-2">
                          {step === 1 && "Enter your email to receive a verification code"}
                          {step === 2 && `Verification code sent to ${email}`}
                          {step === 3 && "Create a strong new password"}
@@ -118,7 +118,7 @@ function ForgotPassword() {
                                      })}
                                      type="email"
                                      placeholder="you@example.com"
-                                     className="w-full bg-gray-800 border-gray-700 text-white rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:border-purple-500 transition-colors"
+                                     className="w-full bg-white border border-gray-300 text-gray-900 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
                                  />
                              </div>
                              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
@@ -129,7 +129,7 @@ function ForgotPassword() {
                          </Button>
 
                          <div className="text-center">
-                             <Link to="/login" className="text-sm text-gray-400 hover:text-white transition-colors flex items-center justify-center gap-1">
+                             <Link to="/login" className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center justify-center gap-1">
                                  <ArrowLeft size={16} /> Back to Login
                              </Link>
                          </div>
@@ -139,14 +139,14 @@ function ForgotPassword() {
                  {step === 2 && (
                      <form onSubmit={handleSubmit(onSubmitOtp)} className="space-y-6">
                          <div>
-                             <label className="text-sm text-gray-400 mb-1 block">Verification Code</label>
+                             <label className="text-sm text-gray-600 mb-1 block">Verification Code</label>
                              <div className="relative">
                                  <KeyRound className="absolute left-3 top-2.5 text-gray-500" size={20} />
                                  <input 
                                      {...register("otp", { required: "Code is required" })}
                                      type="text"
                                      placeholder="Enter 6-digit code"
-                                     className="w-full bg-gray-800 border-gray-700 text-white rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:border-purple-500 transition-colors"
+                                     className="w-full bg-white border border-gray-300 text-gray-900 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
                                  />
                              </div>
                              {errors.otp && <p className="text-red-500 text-xs mt-1">{errors.otp.message}</p>}
@@ -157,7 +157,7 @@ function ForgotPassword() {
                          </Button>
 
                          <div className="text-center">
-                             <button type="button" onClick={() => setStep(1)} className="text-sm text-gray-400 hover:text-white transition-colors">
+                             <button type="button" onClick={() => setStep(1)} className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
                                  Change Email
                              </button>
                          </div>
@@ -167,7 +167,7 @@ function ForgotPassword() {
                 {step === 3 && (
                      <form onSubmit={handleSubmit(onSubmitReset)} className="space-y-6">
                          <div>
-                             <label className="text-sm text-gray-400 mb-1 block">New Password</label>
+                             <label className="text-sm text-gray-600 mb-1 block">New Password</label>
                              <div className="relative">
                                  <Lock className="absolute left-3 top-2.5 text-gray-500" size={20} />
                                  <input 
@@ -177,12 +177,12 @@ function ForgotPassword() {
                                      })}
                                      type={showPassword ? "text" : "password"}
                                      placeholder="Enter new password"
-                                     className="w-full bg-gray-800 border-gray-700 text-white rounded-lg pl-10 pr-10 py-2 focus:outline-none focus:border-purple-500 transition-colors"
+                                     className="w-full bg-white border border-gray-300 text-gray-900 rounded-lg pl-10 pr-10 py-2 focus:outline-none focus:border-blue-500 transition-colors"
                                  />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-2.5 text-gray-500 hover:text-white transition-colors"
+                                    className="absolute right-3 top-2.5 text-gray-500 hover:text-gray-900 transition-colors"
                                 >
                                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                 </button>
@@ -191,14 +191,14 @@ function ForgotPassword() {
                          </div>
 
                          <div>
-                             <label className="text-sm text-gray-400 mb-1 block">Confirm Password</label>
+                             <label className="text-sm text-gray-600 mb-1 block">Confirm Password</label>
                              <div className="relative">
                                  <Lock className="absolute left-3 top-2.5 text-gray-500" size={20} />
                                  <input 
                                      {...register("confirmNewPassword", { required: "Please confirm password" })}
                                      type={showPassword ? "text" : "password"}
                                      placeholder="Confirm new password"
-                                     className="w-full bg-gray-800 border-gray-700 text-white rounded-lg pl-10 pr-10 py-2 focus:outline-none focus:border-purple-500 transition-colors"
+                                     className="w-full bg-white border border-gray-300 text-gray-900 rounded-lg pl-10 pr-10 py-2 focus:outline-none focus:border-blue-500 transition-colors"
                                  />
                              </div>
                          </div>

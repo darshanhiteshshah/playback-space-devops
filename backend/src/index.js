@@ -6,6 +6,9 @@ import { app } from "./app.js";
 dotenv.config({
   path: "./.env",
 });
+console.log("ENV" , process.env.MONGO_URI);
+console.log("JWT:", process.env.JWT_SECRET);
+console.log("REFRESH:", process.env.REFRESH_TOKEN_SECRET);
 
 connectDB()
   .then(() => {

@@ -117,7 +117,7 @@ function Dashboard() {
 
     const statItems = [
         { label: "Total Views", value: stats.totalViews || 0, icon: Eye, color: "text-blue-400" },
-        { label: "Total Subscribers", value: stats.totalSubscribers || 0, icon: Users, color: "text-purple-400" },
+        { label: "Total Subscribers", value: stats.totalSubscribers || 0, icon: Users, color: "text-blue-400" },
         { label: "Total Likes", value: stats.totalLikes || 0, icon: Heart, color: "text-red-400" },
         { label: "Total Videos", value: stats.totalVideos || 0, icon: Video, color: "text-green-400" },
     ];
@@ -199,25 +199,25 @@ function Dashboard() {
     if (loading) {
          return (
             <div className="w-full h-[80vh] flex items-center justify-center">
-                <Loader2 className="w-10 h-10 animate-spin text-purple-500" />
+                <Loader2 className="w-10 h-10 animate-spin text-blue-500" />
             </div>
         );
     }
 
     return (
-        <div className="w-full text-white">
+        <div className="w-full text-gray-900">
             <div className="mb-8">
                 <h1 className="text-3xl font-bold mb-6">Channel Dashboard</h1>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {statItems.map((item) => (
-                        <div key={item.label} className="bg-gray-900 border border-gray-800 rounded-xl p-6">
+                        <div key={item.label} className="bg-white border border-gray-200 rounded-xl p-6">
                             <div className="flex items-center gap-4">
-                                <div className={`p-3 rounded-full bg-gray-800 ${item.color}`}>
+                                <div className={`p-3 rounded-full bg-gray-100 ${item.color}`}>
                                     <item.icon size={24} />
                                 </div>
                                 <div>
-                                    <p className="text-gray-400 text-sm font-medium">{item.label}</p>
+                                    <p className="text-gray-600 text-sm font-medium">{item.label}</p>
                                     <p className="text-2xl font-bold">{item.value}</p>
                                 </div>
                             </div>
@@ -237,8 +237,8 @@ function Dashboard() {
             </div>
 
             {videos.length === 0 ? (
-                <div className="text-center py-20 bg-gray-900 rounded-xl border border-gray-800 border-dashed">
-                    <p className="text-gray-500 mb-4">You haven't uploaded any videos yet.</p>
+                <div className="text-center py-20 bg-gray-100 rounded-xl border border-gray-300 border-dashed">
+                    <p className="text-gray-600 mb-4">You haven't uploaded any videos yet.</p>
                     <Button onClick={() => setShowUploadModal(true)}>
                         Upload Your First Video
                     </Button>
@@ -261,14 +261,14 @@ function Dashboard() {
                                 <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <button 
                                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); openEditModal(video); }} 
-                                        className="p-2 bg-gray-900/90 rounded-full text-white hover:text-blue-400 hover:bg-black transition-colors"
+                                        className="p-2 bg-white/90 rounded-full text-gray-900 hover:text-blue-600 hover:bg-gray-100 transition-colors"
                                         title="Edit Video"
                                     >
                                         <Pencil size={18} />
                                     </button>
                                     <button 
                                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleDeleteClick(video._id); }} 
-                                        className="p-2 bg-gray-900/90 rounded-full text-white hover:text-red-400 hover:bg-black transition-colors"
+                                        className="p-2 bg-white/90 rounded-full text-gray-900 hover:text-red-600 hover:bg-gray-100 transition-colors"
                                         title="Delete Video"
                                     >
                                         <Trash2 size={18} />
@@ -281,24 +281,24 @@ function Dashboard() {
 
             {/* Upload Modal */}
             {showUploadModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 w-full max-w-lg shadow-2xl relative max-h-[90vh] overflow-y-auto">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/70 backdrop-blur-sm">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 w-full max-w-lg shadow-2xl relative max-h-[90vh] overflow-y-auto">
                         <button 
                             onClick={() => !uploadUtil.uploading && setShowUploadModal(false)}
-                            className="absolute top-4 right-4 text-gray-400 hover:text-white disabled:opacity-50"
+                            className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 disabled:opacity-50"
                             disabled={uploadUtil.uploading}
                         >
                             <X size={24} />
                         </button>
                         
                         <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-                            <Upload size={24} className="text-purple-500" />
+                            <Upload size={24} className="text-blue-500" />
                             Upload New Video
                         </h2>
 
                         <form onSubmit={handleUpload} className="space-y-4">
                             {/* Video File Input */}
-                            <div className="border-2 border-dashed border-gray-700 rounded-xl p-8 text-center hover:bg-gray-800/50 transition-colors">
+                            <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:bg-gray-100 transition-colors">
                                 <input 
                                     type="file" 
                                     accept="video/*"
@@ -307,13 +307,13 @@ function Dashboard() {
                                     onChange={(e) => setUploadUtil({ ...uploadUtil, videoFile: e.target.files[0] })}
                                 />
                                 <label htmlFor="video-upload" className="cursor-pointer flex flex-col items-center gap-2">
-                                    <div className="p-4 bg-purple-500/10 rounded-full text-purple-500">
+                                    <div className="p-4 bg-blue-500/10 rounded-full text-blue-500">
                                         <Video size={32} />
                                     </div>
-                                    <span className="font-medium text-white">
+                                    <span className="font-medium text-gray-900">
                                         {uploadUtil.videoFile ? uploadUtil.videoFile.name : "Select Video File"}
                                     </span>
-                                    <span className="text-sm text-gray-500">
+                                    <span className="text-sm text-gray-600">
                                         {uploadUtil.videoFile ? (uploadUtil.videoFile.size / (1024 * 1024)).toFixed(2) + " MB" : "Click to browse"}
                                     </span>
                                 </label>
@@ -321,32 +321,32 @@ function Dashboard() {
 
                             {/* Thumbnail Input */}
                             <div>
-                                <label className="text-sm text-gray-400 mb-1 block">Thumbnail</label>
+                                <label className="text-sm text-gray-600 mb-1 block">Thumbnail</label>
                                 <input 
                                     type="file" 
                                     accept="image/*"
-                                    className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-800 file:text-white hover:file:bg-gray-700"
+                                    className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-gray-900 hover:file:bg-gray-300"
                                     onChange={(e) => setUploadUtil({ ...uploadUtil, thumbnailFile: e.target.files[0] })}
                                 />
                             </div>
 
                             <div>
-                                <label className="text-sm text-gray-400 mb-1 block">Title</label>
+                                <label className="text-sm text-gray-600 mb-1 block">Title</label>
                                 <Input 
                                     placeholder="Video title"
                                     value={uploadUtil.title}
                                     onChange={(e) => setUploadUtil({...uploadUtil, title: e.target.value})}
-                                    className="bg-gray-800 border-gray-700"
+                                    className="bg-white border-gray-300"
                                 />
                             </div>
                             
                             <div>
-                                <label className="text-sm text-gray-400 mb-1 block">Description</label>
+                                <label className="text-sm text-gray-600 mb-1 block">Description</label>
                                 <textarea
                                     placeholder="Video description"
                                     value={uploadUtil.description}
                                     onChange={(e) => setUploadUtil({...uploadUtil, description: e.target.value})}
-                                    className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white min-h-[100px] resize-none"
+                                    className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 min-h-[100px] resize-none"
                                 />
                             </div>
 
@@ -368,11 +368,11 @@ function Dashboard() {
 
             {/* Edit Modal */}
             {showEditModal && editVideo && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 w-full max-w-lg shadow-2xl relative max-h-[90vh] overflow-y-auto">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/70 backdrop-blur-sm">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 w-full max-w-lg shadow-2xl relative max-h-[90vh] overflow-y-auto">
                         <button 
                             onClick={() => !updating && setShowEditModal(false)}
-                            className="absolute top-4 right-4 text-gray-400 hover:text-white disabled:opacity-50"
+                            className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 disabled:opacity-50"
                             disabled={updating}
                         >
                             <X size={24} />
@@ -386,41 +386,41 @@ function Dashboard() {
                         <form onSubmit={handleUpdate} className="space-y-4">
                             {/* Thumbnail Input */}
                             <div>
-                                <label className="text-sm text-gray-400 mb-1 block">New Thumbnail (Optional)</label>
+                                <label className="text-sm text-gray-600 mb-1 block">New Thumbnail (Optional)</label>
                                 <div className="flex items-center gap-4 mb-2">
                                     {(editVideo.thumbnailFile || editVideo.thumbnail) && (
                                         <img 
                                           src={editVideo.thumbnailFile ? URL.createObjectURL(editVideo.thumbnailFile) : editVideo.thumbnail} 
                                           alt="Preview" 
-                                          className="w-32 h-20 object-cover rounded-md border border-gray-700" 
+                                          className="w-32 h-20 object-cover rounded-md border border-gray-300" 
                                         />
                                     )}
                                 </div>
                                 <input 
                                     type="file" 
                                     accept="image/*"
-                                    className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-800 file:text-white hover:file:bg-gray-700"
+                                    className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-gray-900 hover:file:bg-gray-300"
                                     onChange={(e) => setEditVideo({ ...editVideo, thumbnailFile: e.target.files[0] })}
                                 />
                             </div>
 
                             <div>
-                                <label className="text-sm text-gray-400 mb-1 block">Title</label>
+                                <label className="text-sm text-gray-600 mb-1 block">Title</label>
                                 <Input 
                                     placeholder="Video title"
                                     value={editVideo.title}
                                     onChange={(e) => setEditVideo({...editVideo, title: e.target.value})}
-                                    className="bg-gray-800 border-gray-700"
+                                    className="bg-white border-gray-300"
                                 />
                             </div>
                             
                             <div>
-                                <label className="text-sm text-gray-400 mb-1 block">Description</label>
+                                <label className="text-sm text-gray-600 mb-1 block">Description</label>
                                 <textarea
                                     placeholder="Video description"
                                     value={editVideo.description}
                                     onChange={(e) => setEditVideo({...editVideo, description: e.target.value})}
-                                    className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white min-h-[100px] resize-none"
+                                    className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 min-h-[100px] resize-none"
                                 />
                             </div>
 
@@ -457,20 +457,20 @@ function Dashboard() {
 
             {/* Delete Confirmation Modal */}
             {showDeleteModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative transform transition-all scale-100">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/70 backdrop-blur-sm">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative transform transition-all scale-100">
                         <div className="text-center">
                             <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4">
                                 <Trash2 className="text-red-500" size={24} />
                             </div>
                             <h3 className="text-xl font-bold mb-2">Delete Video?</h3>
-                            <p className="text-gray-400 mb-6">
+                            <p className="text-gray-600 mb-6">
                                 Are you sure you want to delete this video? This action cannot be undone.
                             </p>
                             <div className="flex gap-3">
                                 <Button 
                                     onClick={() => setShowDeleteModal(false)}
-                                    className="flex-1 bg-gray-800 hover:bg-gray-700 text-white"
+                                    className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-900"
                                 >
                                     Cancel
                                 </Button>

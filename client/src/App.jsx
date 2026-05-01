@@ -33,7 +33,7 @@ const Layout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-900">
        <Toaster position="top-center" reverseOrder={false} />
        <Header toggleSidebar={toggleSidebar} isOpen={isSidebarOpen} />
        <Sidebar isOpen={isSidebarOpen} />

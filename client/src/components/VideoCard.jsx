@@ -40,12 +40,12 @@ function VideoCard({ video }) {
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 {video.isPublished === false && (
-                    <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-md text-white text-xs px-2 py-1 rounded-md flex items-center gap-1.5 z-10">
+                    <div className="absolute top-2 left-2 bg-white/70 backdrop-blur-md text-gray-900 text-xs px-2 py-1 rounded-md flex items-center gap-1.5 z-10">
                         <Lock size={12} />
                         <span>Private</span>
                     </div>
                 )}
-                <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded font-medium">
+                <div className="absolute bottom-2 right-2 bg-white/80 text-gray-900 text-xs px-1.5 py-0.5 rounded font-medium">
                     {formatDuration(video.duration)}
                 </div>
             </Link>
@@ -56,15 +56,15 @@ function VideoCard({ video }) {
                     <img src={ownerAvatar} alt={ownerName} className="w-9 h-9 rounded-full object-cover" />
                 </Link>
                 <div className="flex flex-col">
-                    <Link to={`/watch/${video._id}`} className="text-white font-semibold text-base leading-tight line-clamp-2 group-hover:text-blue-400 transition-colors">
+                    <Link to={`/watch/${video._id}`} className="text-gray-900 font-semibold text-base leading-tight line-clamp-2 group-hover:text-blue-600 transition-colors">
                         {video.title}
                     </Link>
-                    <Link to={`/c/${owner.username}`} className="text-gray-400 text-sm mt-1 hover:text-white transition-colors">
+                    <Link to={`/c/${owner.username}`} className="text-gray-600 text-sm mt-1 hover:text-blue-600 transition-colors">
                         {ownerName}
                     </Link>
-                    <div className="text-gray-400 text-sm flex items-center gap-1">
+                    <div className="text-gray-600 text-sm flex items-center gap-1">
                         <span>{views} views</span>
-                        <span className="w-0.5 h-0.5 bg-gray-400 rounded-full"></span>
+                        <span className="w-0.5 h-0.5 bg-gray-600 rounded-full"></span>
                         <span>{formatTimeAgo(video.createdAt)}</span>
                     </div>
                 </div>

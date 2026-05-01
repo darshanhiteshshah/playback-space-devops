@@ -327,13 +327,13 @@ function UserProfile() {
         setShowDeleteModal(true);
     };
 
-    if (loading) return <div className="text-center mt-20 text-white">Loading Profile...</div>;
-    if (!profile) return <div className="text-center mt-20 text-white">Profile not found</div>;
+    if (loading) return <div className="text-center mt-20 text-gray-900">Loading Profile...</div>;
+    if (!profile) return <div className="text-center mt-20 text-gray-900">Profile not found</div>;
 
     return (
-        <div className="text-white w-full">
+        <div className="text-gray-900 w-full">
             {/* Cover Image */}
-            <div className="relative w-full h-48 sm:h-64 lg:h-80 bg-gray-800 overflow-hidden rounded-xl">
+            <div className="relative w-full h-48 sm:h-64 lg:h-80 bg-gray-200 overflow-hidden rounded-xl">
                  <img 
                     src={coverFile ? URL.createObjectURL(coverFile) : profile.coverImage} 
                     alt="Cover" 
@@ -354,7 +354,7 @@ function UserProfile() {
                 <div className="flex flex-col sm:flex-row gap-4 items-start -mt-12 sm:-mt-16 mb-6">
                     {/* Avatar */}
                     <div className="relative group">
-                        <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-black overflow-hidden bg-gray-800 relative z-10">
+                        <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-white overflow-hidden bg-gray-200 relative z-10">
                             <img 
                                 src={avatarFile ? URL.createObjectURL(avatarFile) : profile.avatar} 
                                 alt={profile.fullName} 
@@ -375,8 +375,8 @@ function UserProfile() {
                             <div className='flex justify-between items-start'>
                                 <div>
                                     <h1 className="text-2xl sm:text-3xl font-bold">{profile.fullName}</h1>
-                                    <p className="text-gray-400">@{profile.username}</p>
-                                    <div className='flex gap-4 mt-2 text-sm text-gray-400'>
+                                    <p className="text-gray-600">@{profile.username}</p>
+                                    <div className='flex gap-4 mt-2 text-sm text-gray-600'>
                                         <span>{profile.subscribersCount || 0} subscribers</span>
                                         <span>{profile.channelsSubscribedToCount || 0} subscribed</span>
                                     </div>
@@ -398,19 +398,19 @@ function UserProfile() {
                             <form onSubmit={handleUpdateProfile} className="space-y-4 max-w-lg">
                                  <div className="grid gap-4">
                                     <div>
-                                        <label className="text-sm text-gray-400 mb-1 block">Full Name</label>
+                                        <label className="text-sm text-gray-600 mb-1 block">Full Name</label>
                                         <Input 
                                             value={editForm.fullName}
                                             onChange={(e) => setEditForm({...editForm, fullName: e.target.value})}
-                                            className="bg-gray-800 border-gray-700"
+                                            className="bg-gray-100 border-gray-300"
                                         />
                                     </div>
                                     <div>
-                                        <label className="text-sm text-gray-400 mb-1 block">Email</label>
+                                        <label className="text-sm text-gray-600 mb-1 block">Email</label>
                                         <Input 
                                             value={editForm.email}
                                             onChange={(e) => setEditForm({...editForm, email: e.target.value})}
-                                            className="bg-gray-800 border-gray-700"
+                                            className="bg-gray-100 border-gray-300"
                                             // readOnly // Depending on if we want to allow email change
                                         />
                                     </div>
@@ -425,7 +425,7 @@ function UserProfile() {
                                             setIsEditing(false);
                                             fetchPersonalDetails(); // Reset text args
                                         }}
-                                        className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700"
+                                        className="px-4 py-2 bg-gray-200 text-gray-900 rounded-lg hover:bg-gray-300"
                                      >
                                         Cancel
                                      </button>
@@ -436,7 +436,7 @@ function UserProfile() {
                 </div>
 
                 {/* Tabs Navigation */}
-                <div className="border-b border-gray-800 mt-8 mb-6">
+                <div className="border-b border-gray-200 mt-8 mb-6">
                     <div className="flex gap-8 overflow-x-auto pb-2 scrollbar-hide">
                         {['videos', 'playlists', 'tweets'].map((tab) => (
                             <button
@@ -444,8 +444,8 @@ function UserProfile() {
                                 onClick={() => setActiveTab(tab)}
                                 className={`text-lg font-medium capitalize px-2 pb-2 transition-colors relative whitespace-nowrap ${
                                     activeTab === tab 
-                                    ? 'text-white border-b-2 border-white' 
-                                    : 'text-gray-400 hover:text-white'
+                                    ? 'text-gray-900 border-b-2 border-gray-900' 
+                                    : 'text-gray-500 hover:text-gray-700'
                                 }`}
                             >
                                 {tab}
@@ -479,12 +479,12 @@ function UserProfile() {
                                     {isOwner && (
                                         <button 
                                             onClick={() => setShowPlaylistModal(true)}
-                                            className="group flex flex-col items-center justify-center space-y-3 bg-gray-900 border-2 border-dashed border-gray-700 rounded-xl aspect-video hover:bg-gray-800 hover:border-blue-500 transition-all cursor-pointer"
+                                            className="group flex flex-col items-center justify-center space-y-3 bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl aspect-video hover:bg-gray-200 hover:border-blue-500 transition-all cursor-pointer"
                                         >
-                                            <div className="p-4 bg-gray-800 rounded-full group-hover:bg-blue-500/20 transition-colors">
-                                                <Plus size={32} className="text-gray-400 group-hover:text-blue-400" />
+                                            <div className="p-4 bg-gray-200 rounded-full group-hover:bg-blue-500/20 transition-colors">
+                                                <Plus size={32} className="text-gray-500 group-hover:text-blue-600" />
                                             </div>
-                                            <span className="font-semibold text-gray-400 group-hover:text-blue-400">Create New Playlist</span>
+                                            <span className="font-semibold text-gray-500 group-hover:text-blue-600">Create New Playlist</span>
                                         </button>
                                     )}
 
@@ -492,7 +492,7 @@ function UserProfile() {
                                     {tabData.length > 0 ? (
                                         tabData.map(playlist => (
                                             <Link key={playlist._id} to={`/playlist/${playlist._id}`} className="group block space-y-3 cursor-pointer">
-                                                <div className="relative aspect-video bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
+                                                <div className="relative aspect-video bg-gray-200 rounded-xl overflow-hidden border border-gray-300">
                                                     {playlist.playlistThumbnail ? (
                                                          <img src={playlist.playlistThumbnail} alt={playlist.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                                                     ) : (
@@ -509,8 +509,8 @@ function UserProfile() {
                                                          </span>
                                                     </div>
                                                 </div>
-                                                <h3 className="font-semibold text-white group-hover:text-blue-400 truncate">{playlist.name}</h3>
-                                                <p className="text-sm text-gray-400 line-clamp-2">{playlist.description}</p>
+                                                <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 truncate">{playlist.name}</h3>
+                                                <p className="text-sm text-gray-600 line-clamp-2">{playlist.description}</p>
                                             </Link>
                                         ))
                                     ) : (
@@ -526,7 +526,7 @@ function UserProfile() {
                                 <div className="max-w-3xl space-y-4">
                                      {/* Create Tweet Form */}
                                      {isOwner && (
-                                         <div className="bg-gray-900 border border-gray-800 p-4 rounded-xl mb-6">
+                                         <div className="bg-white border border-gray-200 p-4 rounded-xl mb-6">
                                              <div className="flex gap-3">
                                                  <img src={currentUser?.avatar || profile.avatar} alt="User" className="w-10 h-10 rounded-full object-cover" />
                                                  <div className="flex-1">
@@ -534,9 +534,9 @@ function UserProfile() {
                                                          value={tweetContent}
                                                          onChange={(e) => setTweetContent(e.target.value)}
                                                          placeholder="What's happening?"
-                                                         className="w-full bg-transparent text-white border-none focus:ring-0 resize-none min-h-[80px] p-0 text-lg placeholder-gray-500 outline-none"
+                                                         className="w-full bg-transparent text-gray-900 border-none focus:ring-0 resize-none min-h-[80px] p-0 text-lg placeholder-gray-500 outline-none"
                                                      />
-                                                     <div className="flex justify-end mt-2 pt-2 border-t border-gray-800">
+                                                     <div className="flex justify-end mt-2 pt-2 border-t border-gray-200">
                                                          <Button 
                                                              onClick={handleCreateTweet} 
                                                              disabled={creatingTweet || !tweetContent.trim()}
@@ -552,7 +552,7 @@ function UserProfile() {
 
                                      {tabData.length > 0 ? (
                                         tabData.map(tweet => (
-                                            <div key={tweet._id} className="bg-gray-900 border border-gray-800 p-4 rounded-xl">
+                                            <div key={tweet._id} className="bg-white border border-gray-200 p-4 rounded-xl">
                                                 <div className="flex gap-3">
                                                     <Link to={`/c/${profile.username}`}>
                                                         <img src={tweet.ownerDetails?.avatar || profile.avatar} alt="User" className="w-10 h-10 rounded-full object-cover" />
@@ -560,7 +560,7 @@ function UserProfile() {
                                                     <div className="flex-1">
                                                         <div className="flex justify-between items-start">
                                                             <div className="flex items-center gap-2 mb-1">
-                                                                 <Link to={`/c/${profile.username}`} className="font-semibold text-white hover:underline">
+                                                                 <Link to={`/c/${profile.username}`} className="font-semibold text-gray-900 hover:underline">
                                                                     {tweet.ownerDetails?.fullName || profile.fullName}
                                                                  </Link>
                                                                  <span className="text-gray-500 text-sm">@{profile.username} · {new Date(tweet.createdAt).toLocaleDateString()}</span>
@@ -574,13 +574,13 @@ function UserProfile() {
                                                                                     setEditingTweetId(tweet._id);
                                                                                     setEditTweetContent(tweet.content);
                                                                                 }}
-                                                                                className="text-gray-500 hover:text-blue-400 p-1 rounded-full hover:bg-gray-800 transition-colors"
+                                                                                className="text-gray-500 hover:text-blue-600 p-1 rounded-full hover:bg-gray-100 transition-colors"
                                                                             >
                                                                                 <Edit2 size={16} />
                                                                             </button>
                                                                             <button 
                                                                                 onClick={() => handleDeleteClick(tweet._id)}
-                                                                                className="text-gray-500 hover:text-red-400 p-1 rounded-full hover:bg-gray-800 transition-colors"
+                                                                                className="text-gray-500 hover:text-red-600 p-1 rounded-full hover:bg-gray-100 transition-colors"
                                                                             >
                                                                                 <Trash2 size={16} />
                                                                             </button>
@@ -595,12 +595,12 @@ function UserProfile() {
                                                                 <textarea
                                                                     value={editTweetContent}
                                                                     onChange={(e) => setEditTweetContent(e.target.value)}
-                                                                    className="w-full bg-gray-800 text-white border border-gray-700 rounded-lg p-3 focus:outline-none focus:border-blue-500 resize-none min-h-[100px]"
+                                                                    className="w-full bg-gray-100 text-gray-900 border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-blue-500 resize-none min-h-[100px]"
                                                                 />
                                                                 <div className="flex gap-2 justify-end mt-2">
                                                                     <button 
                                                                         onClick={() => setEditingTweetId(null)}
-                                                                        className="px-3 py-1.5 text-sm text-gray-400 hover:text-white"
+                                                                        className="px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900"
                                                                     >
                                                                         Cancel
                                                                     </button>
@@ -613,7 +613,7 @@ function UserProfile() {
                                                                 </div>
                                                             </div>
                                                         ) : (
-                                                            <p className="text-gray-300 whitespace-pre-wrap">{tweet.content}</p>
+                                                            <p className="text-gray-700 whitespace-pre-wrap">{tweet.content}</p>
                                                         )}
                                                     </div>
                                                 </div>
@@ -632,15 +632,15 @@ function UserProfile() {
             </div>
             {/* Delete Confirmation Modal */}
             {showDeleteModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
                         <h3 className="text-xl font-bold mb-2">Delete Tweet</h3>
-                        <p className="text-gray-400 mb-6">Are you sure you want to delete this tweet? This action cannot be undone.</p>
+                        <p className="text-gray-600 mb-6">Are you sure you want to delete this tweet? This action cannot be undone.</p>
                         
                         <div className="flex justify-end gap-3">
                             <button 
                                 onClick={() => setShowDeleteModal(false)}
-                                className="px-4 py-2 text-gray-400 hover:text-white transition-colors"
+                                className="px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors"
                             >
                                 Cancel
                             </button>
@@ -657,11 +657,11 @@ function UserProfile() {
 
             {/* Create Playlist Modal */}
             {showPlaylistModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 w-full max-w-md shadow-2xl relative">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 w-full max-w-md shadow-2xl relative">
                         <button 
                             onClick={() => setShowPlaylistModal(false)}
-                            className="absolute top-4 right-4 text-gray-400 hover:text-white"
+                            className="absolute top-4 right-4 text-gray-400 hover:text-gray-900"
                         >
                             <X size={24} />
                         </button>
@@ -673,23 +673,23 @@ function UserProfile() {
 
                         <form onSubmit={handleCreatePlaylist} className="space-y-4">
                             <div>
-                                <label className="text-sm text-gray-400 mb-1 block">Name</label>
+                                <label className="text-sm text-gray-600 mb-1 block">Name</label>
                                 <Input 
                                     placeholder="Enter playlist name"
                                     value={createPlaylistForm.name}
                                     onChange={(e) => setCreatePlaylistForm({...createPlaylistForm, name: e.target.value})}
-                                    className="bg-gray-800 border-gray-700"
+                                    className="bg-gray-100 border-gray-300"
                                     autoFocus
                                 />
                             </div>
                             
                             <div>
-                                <label className="text-sm text-gray-400 mb-1 block">Description</label>
+                                <label className="text-sm text-gray-600 mb-1 block">Description</label>
                                 <textarea
                                     placeholder="Enter description (optional)"
                                     value={createPlaylistForm.description}
                                     onChange={(e) => setCreatePlaylistForm({...createPlaylistForm, description: e.target.value})}
-                                    className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white min-h-[100px] resize-none"
+                                    className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 min-h-[100px] resize-none"
                                 />
                             </div>
 
@@ -699,9 +699,9 @@ function UserProfile() {
                                         type="checkbox" 
                                         checked={createPlaylistForm.isPublic}
                                         onChange={(e) => setCreatePlaylistForm({...createPlaylistForm, isPublic: e.target.checked})}
-                                        className="w-5 h-5 rounded border-gray-700 bg-gray-800 text-blue-500 focus:ring-blue-500/50"
+                                        className="w-5 h-5 rounded border-gray-300 bg-gray-100 text-blue-500 focus:ring-blue-500/50"
                                     />
-                                    <span className="text-gray-300 group-hover:text-white transition-colors">Make public</span>
+                                    <span className="text-gray-700 group-hover:text-gray-900 transition-colors">Make public</span>
                                 </label>
                             </div>
 

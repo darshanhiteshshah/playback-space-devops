@@ -22,7 +22,7 @@ const Input = React.forwardRef( function Input({
             <div className="relative">
                 <input
                     type={isPassword ? (showPassword ? "text" : "password") : type}
-                    className={`px-3 py-2 rounded-lg bg-gray-800 text-white outline-none focus:bg-gray-700 duration-200 border border-gray-600 w-full ${className} ${isPassword ? 'pr-10' : ''}`}
+                    className={`px-3 py-2 rounded-lg bg-white text-gray-900 outline-none focus:bg-gray-100 duration-200 border border-gray-300 w-full ${className} ${isPassword ? 'pr-10' : ''}`}
                     ref={ref}
                     {...props}
                     id={id}
@@ -31,7 +31,7 @@ const Input = React.forwardRef( function Input({
                     <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-gray-900 transition-colors"
                     >
                         {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                     </button>

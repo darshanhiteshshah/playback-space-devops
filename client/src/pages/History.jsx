@@ -27,7 +27,7 @@ function History() {
         fetchHistory();
     }, []);
 
-    if (loading) return <div className="text-white text-center mt-20">Loading history...</div>;
+    if (loading) return <div className="text-gray-900 text-center mt-20">Loading history...</div>;
 
     if (videos.length === 0) {
         return (
@@ -43,7 +43,7 @@ function History() {
         <div className="w-full">
             <div className="flex items-center justify-between mb-6">
                 <h1 className="text-2xl font-bold flex items-center gap-2">
-                    <HistoryIcon className="text-purple-500" />
+                    <HistoryIcon className="text-blue-500" />
                     Watch History
                 </h1>
                 {/* Optional: Clear History button could go here */}

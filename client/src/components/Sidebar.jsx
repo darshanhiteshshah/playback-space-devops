@@ -15,7 +15,7 @@ function Sidebar({ isOpen }) {
   return (
     <aside 
         className={`
-            fixed left-0 top-16 bottom-0 z-40 bg-black border-r border-white/10
+            fixed left-0 top-16 bottom-0 z-40 bg-white border-r border-gray-200
             transition-all duration-300 ease-in-out overflow-y-auto
             ${isOpen ? 'w-64 translate-x-0' : 'w-64 -translate-x-full lg:translate-x-0 lg:w-20'}
         `}
@@ -27,7 +27,7 @@ function Sidebar({ isOpen }) {
             to={item.path}
             className={({ isActive }) => `
               flex items-center gap-4 px-3 py-3 rounded-lg transition-colors
-              ${isActive ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-900'}
+              ${isActive ? 'bg-blue-100 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}
               ${!isOpen && 'lg:justify-center'}
             `}
             title={item.label}
@@ -43,10 +43,10 @@ function Sidebar({ isOpen }) {
           </NavLink>
         ))}
         
-        <div className="my-2 border-t border-gray-800" />
+        <div className="my-2 border-t border-gray-200" />
         
         {/* Secondary Items */}
-        <NavLink to="/settings" className="flex items-center gap-4 px-3 py-3 rounded-lg text-gray-300 hover:bg-gray-900 lg:justify-center xl:justify-start">
+        <NavLink to="/settings" className="flex items-center gap-4 px-3 py-3 rounded-lg text-gray-700 hover:bg-gray-100 lg:justify-center xl:justify-start">
              <Settings size={22} />
              <span className={`${!isOpen ? 'lg:hidden' : ''} text-sm font-medium`}>Settings</span>
         </NavLink>

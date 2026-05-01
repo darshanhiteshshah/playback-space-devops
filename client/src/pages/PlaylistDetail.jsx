@@ -128,20 +128,20 @@ function PlaylistDetail() {
     };
 
 
-    if (loading) return <div className="text-center mt-20 text-white">Loading Playlist...</div>;
-    if (!playlist) return <div className="text-center mt-20 text-white">Playlist not found</div>;
+    if (loading) return <div className="text-center mt-20 text-gray-900">Loading Playlist...</div>;
+    if (!playlist) return <div className="text-center mt-20 text-gray-900">Playlist not found</div>;
 
     // Use aggregate data video objects if present (controller seems to populate them in `videos` array)
     const videos = playlist.videos || [];
 
     return (
-        <div className="w-full text-white">
+        <div className="w-full text-gray-900">
              {/* Header Section */}
-            <div className={`p-6 bg-gray-900 rounded-2xl mb-8 border border-gray-800 ${isEditing ? 'border-blue-500/50' : ''}`}>
+            <div className={`p-6 bg-white rounded-2xl mb-8 border border-gray-200 ${isEditing ? 'border-blue-500/50' : ''}`}>
                 {!isEditing ? (
                     <div className="flex flex-col md:flex-row gap-6">
                         {/* Thumbnail */}
-                        <div className="w-full md:w-80 aspect-video bg-gray-800 rounded-xl overflow-hidden flex-shrink-0 relative group">
+                        <div className="w-full md:w-80 aspect-video bg-gray-100 rounded-xl overflow-hidden flex-shrink-0 relative group">
                              {videos.length > 0 ? (
                                  <img src={videos[0].thumbnail} alt={playlist.name} className="w-full h-full object-cover" />
                              ) : (
@@ -149,7 +149,7 @@ function PlaylistDetail() {
                                     <PlaySquare size={48} className="opacity-50" />
                                 </div>
                              )}
-                             <div className="absolute inset-x-0 bottom-0 bg-black/60 backdrop-blur-sm p-2 text-center text-sm">
+                             <div className="absolute inset-x-0 bottom-0 bg-white/60 backdrop-blur-sm p-2 text-center text-sm text-gray-900">
                                  {videos.length} videos
                              </div>
                         </div>
@@ -159,7 +159,7 @@ function PlaylistDetail() {
                             <div className="flex justify-between items-start">
                                 <div>
                                     <h1 className="text-3xl font-bold mb-2">{playlist.name}</h1>
-                                    <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
+                                    <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
                                         <span className="flex items-center gap-1.5">
                                             {playlist.isPublic ? <Globe size={14}/> : <Lock size={14}/>}
                                             {playlist.isPublic ? 'Public' : 'Private'}
@@ -167,14 +167,14 @@ function PlaylistDetail() {
                                         <span>•</span>
                                         <span>Created {new Date(playlist.createdAt).toLocaleDateString()}</span>
                                     </div>
-                                    <p className="text-gray-300 whitespace-pre-line">{playlist.description || "No description provided."}</p>
+                                    <p className="text-gray-700 whitespace-pre-line">{playlist.description || "No description provided."}</p>
                                 </div>
                                 {isOwner && (
                                     <div className="flex gap-2">
-                                        <Button onClick={() => setIsEditing(true)} className="flex items-center gap-2" bgColor="bg-gray-800" textColor="text-white">
+                                        <Button onClick={() => setIsEditing(true)} className="flex items-center gap-2" bgColor="bg-gray-100" textColor="text-gray-900">
                                             <Edit2 size={16} /> Edit
                                         </Button>
-                                        <button onClick={handleDeleteClick} className="p-2 bg-gray-800 rounded-lg hover:bg-red-500/20 hover:text-red-500 text-gray-400 transition-colors" title="Delete Playlist">
+                                        <button onClick={handleDeleteClick} className="p-2 bg-gray-100 rounded-lg hover:bg-red-500/20 hover:text-red-500 text-gray-600 transition-colors" title="Delete Playlist">
                                             <Trash2 size={20} />
                                         </button>
                                     </div>
@@ -190,27 +190,27 @@ function PlaylistDetail() {
                         </h2>
                         
                         <div>
-                            <label className="text-sm text-gray-400 mb-1 block">Name</label>
+                            <label className="text-sm text-gray-600 mb-1 block">Name</label>
                             <Input 
                                 value={editForm.name}
                                 onChange={(e) => setEditForm({...editForm, name: e.target.value})}
-                                className="bg-gray-800 border-gray-700"
+                                className="bg-gray-100 border-gray-300"
                                 autoFocus
                             />
                         </div>
 
                         <div>
-                            <label className="text-sm text-gray-400 mb-1 block">Description</label>
+                            <label className="text-sm text-gray-600 mb-1 block">Description</label>
                             <textarea
                                 value={editForm.description}
                                 onChange={(e) => setEditForm({...editForm, description: e.target.value})}
-                                className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white min-h-[120px] resize-none"
+                                className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 min-h-[120px] resize-none"
                             />
                         </div>
 
                         <div className="flex items-center gap-2 mb-4">
-                             <label className="flex items-center gap-2 cursor-pointer group p-2 border border-transparent rounded-lg hover:bg-gray-800 transition-colors">
-                                <div className={`w-10 h-6 flex items-center rounded-full p-1 transition-colors ${editForm.isPublic ? 'bg-blue-600' : 'bg-gray-600'}`}>
+                             <label className="flex items-center gap-2 cursor-pointer group p-2 border border-transparent rounded-lg hover:bg-gray-100 transition-colors">
+                                <div className={`w-10 h-6 flex items-center rounded-full p-1 transition-colors ${editForm.isPublic ? 'bg-blue-600' : 'bg-gray-400'}`}>
                                     <div className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform ${editForm.isPublic ? 'translate-x-4' : ''}`} />
                                     <input 
                                         type="checkbox" 
@@ -219,17 +219,17 @@ function PlaylistDetail() {
                                         onChange={(e) => setEditForm({...editForm, isPublic: e.target.checked})}
                                     />
                                 </div>
-                                <span className="text-gray-300 group-hover:text-white transition-colors">
+                                <span className="text-gray-700 group-hover:text-gray-900 transition-colors">
                                     {editForm.isPublic ? 'Public Playlist' : 'Private Playlist'}
                                 </span>
                             </label>
                         </div>
 
-                        <div className="flex justify-end gap-3 pt-4 border-t border-gray-800">
+                        <div className="flex justify-end gap-3 pt-4 border-t border-gray-300">
                              <button 
                                 type="button"
                                 onClick={() => { setIsEditing(false); setEditForm({ name: playlist.name, description: playlist.description, isPublic: playlist.isPublic }); }} // Reset
-                                className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 font-medium"
+                                className="px-4 py-2 bg-gray-100 text-gray-900 rounded-lg hover:bg-gray-200 font-medium"
                              >
                                 Cancel
                              </button>
@@ -247,20 +247,20 @@ function PlaylistDetail() {
                 <div className="grid grid-cols-1 gap-4">
                     {videos.length > 0 ? (
                         videos.map((video) => (
-                             <div key={video._id} className="group flex gap-4 p-3 rounded-xl hover:bg-gray-900 transition-colors relative">
+                             <div key={video._id} className="group flex gap-4 p-3 rounded-xl hover:bg-gray-100 transition-colors relative">
                                  {/* Use VideoCard but maybe customized or strict layout */}
                                  <div className="w-48 flex-shrink-0">
                                      <VideoCard video={video} />
                                  </div>
                                  <div className="flex-1 py-1">
                                       <h4 className="font-bold text-lg mb-1">{video.title}</h4>
-                                      <p className="text-gray-400 text-sm mb-2 line-clamp-2">{video.description}</p>
+                                      <p className="text-gray-600 text-sm mb-2 line-clamp-2">{video.description}</p>
                                       
                                       {/* Quick Actions for Owner */}
                                       {isOwner && (
                                          <button 
                                             onClick={() => handleRemoveVideoClick(video._id)}
-                                            className="text-gray-500 hover:text-red-500 text-sm flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity absolute right-4 top-4 bg-black/80 p-2 rounded-lg"
+                                            className="text-gray-600 hover:text-red-500 text-sm flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity absolute right-4 top-4 bg-white/80 p-2 rounded-lg"
                                          >
                                             <X size={14} /> Remove from playlist
                                          </button>
@@ -269,7 +269,7 @@ function PlaylistDetail() {
                              </div>
                         ))
                     ) : (
-                        <div className="text-center text-gray-500 py-10 bg-gray-900/50 rounded-xl border border-dashed border-gray-800">
+                        <div className="text-center text-gray-600 py-10 bg-gray-100/50 rounded-xl border border-dashed border-gray-300">
                             No videos in this playlist yet.
                         </div>
                     )}
@@ -277,15 +277,15 @@ function PlaylistDetail() {
             </div>
             {/* Delete Playlist Modal */}
             {showDeleteModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/70 backdrop-blur-sm">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
                         <h3 className="text-xl font-bold mb-2">Delete Playlist</h3>
-                        <p className="text-gray-400 mb-6">Are you sure you want to delete this playlist? This action cannot be undone.</p>
+                        <p className="text-gray-600 mb-6">Are you sure you want to delete this playlist? This action cannot be undone.</p>
                         
                         <div className="flex justify-end gap-3">
                             <button 
                                 onClick={() => setShowDeleteModal(false)}
-                                className="px-4 py-2 text-gray-400 hover:text-white transition-colors"
+                                className="px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors"
                             >
                                 Cancel
                             </button>
@@ -302,15 +302,15 @@ function PlaylistDetail() {
 
             {/* Remove Video Modal */}
             {showRemoveVideoModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/70 backdrop-blur-sm">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
                         <h3 className="text-xl font-bold mb-2">Remove Video</h3>
-                        <p className="text-gray-400 mb-6">Are you sure you want to remove this video from the playlist?</p>
+                        <p className="text-gray-600 mb-6">Are you sure you want to remove this video from the playlist?</p>
                         
                         <div className="flex justify-end gap-3">
                             <button 
                                 onClick={() => setShowRemoveVideoModal(false)}
-                                className="px-4 py-2 text-gray-400 hover:text-white transition-colors"
+                                className="px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors"
                             >
                                 Cancel
                             </button>

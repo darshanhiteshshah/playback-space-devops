@@ -53,39 +53,39 @@ function Settings() {
     };
 
     return (
-        <div className="w-full text-white max-w-3xl mx-auto py-8">
+        <div className="w-full text-gray-900 max-w-3xl mx-auto py-8">
             <h1 className="text-3xl font-bold mb-8">Settings</h1>
 
             {/* Change Password Section */}
-            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 sm:p-8 mb-8">
+            <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 mb-8">
                 <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-gray-800 rounded-full text-blue-400">
+                    <div className="p-3 bg-gray-100 rounded-full text-blue-600">
                         <Lock size={24} />
                     </div>
                     <div>
                         <h2 className="text-xl font-bold">Change Password</h2>
-                        <p className="text-sm text-gray-400">Update your password to keep your account secure</p>
+                        <p className="text-sm text-gray-600">Update your password to keep your account secure</p>
                     </div>
                 </div>
 
                 <form onSubmit={handleSubmit(onChangePassword)} className="space-y-4 max-w-lg ml-0 sm:ml-16">
                     <div>
-                        <label className="text-sm text-gray-400 mb-1 block">Current Password</label>
+                        <label className="text-sm text-gray-600 mb-1 block">Current Password</label>
                         <Input 
                             type="password"
                             placeholder="Enter current password"
-                            className="bg-gray-800 border-gray-700"
+                            className="bg-gray-100 border-gray-300"
                             {...register("oldPassword", { required: "Current password is required" })}
                         />
                         {errors.oldPassword && <p className="text-red-500 text-xs mt-1">{errors.oldPassword.message}</p>}
                     </div>
                     
                     <div>
-                         <label className="text-sm text-gray-400 mb-1 block">New Password</label>
+                         <label className="text-sm text-gray-600 mb-1 block">New Password</label>
                         <Input 
                             type="password"
                             placeholder="Enter new password"
-                            className="bg-gray-800 border-gray-700"
+                            className="bg-gray-100 border-gray-300"
                             {...register("newPassword", { 
                                 required: "New password is required",
                                 minLength: { value: 6, message: "Password must be at least 6 characters" }
@@ -95,11 +95,11 @@ function Settings() {
                     </div>
 
                     <div>
-                         <label className="text-sm text-gray-400 mb-1 block">Confirm New Password</label>
+                         <label className="text-sm text-gray-600 mb-1 block">Confirm New Password</label>
                         <Input 
                             type="password"
                             placeholder="Confirm new password"
-                            className="bg-gray-800 border-gray-700"
+                            className="bg-gray-100 border-gray-300"
                             {...register("confirmNewPassword", { required: "Please confirm your new password" })}
                         />
                     </div>
@@ -113,22 +113,22 @@ function Settings() {
             </div>
 
             {/* Danger Zone Section */}
-            <div className="bg-red-900/10 border border-red-900/30 rounded-2xl p-6 sm:p-8">
+            <div className="bg-red-50 border border-red-200 rounded-2xl p-6 sm:p-8">
                 <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-red-900/20 rounded-full text-red-500">
+                    <div className="p-3 bg-red-100 rounded-full text-red-600">
                         <Shield size={24} />
                     </div>
                     <div>
-                        <h2 className="text-xl font-bold text-red-500">Danger Zone</h2>
-                        <p className="text-sm text-red-400/70">Irreversible actions for your account</p>
+                        <h2 className="text-xl font-bold text-red-600">Danger Zone</h2>
+                        <p className="text-sm text-red-500">Irreversible actions for your account</p>
                     </div>
                 </div>
 
                 <div className="ml-0 sm:ml-16">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-red-900/20 rounded-xl border border-red-900/30">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-red-50 rounded-xl border border-red-200">
                         <div>
-                            <h3 className="font-semibold text-white">Delete Account</h3>
-                            <p className="text-sm text-gray-400">Permanently remove your account and all its data.</p>
+                            <h3 className="font-semibold text-gray-900">Delete Account</h3>
+                            <p className="text-sm text-gray-600">Permanently remove your account and all its data.</p>
                         </div>
                         <Button 
                             onClick={() => setDeletingParams({ ...deletingParams, showModal: true })}
@@ -142,17 +142,17 @@ function Settings() {
 
             {/* Delete Confirmation Modal */}
             {deletingParams.showModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-                    <div className="bg-gray-900 border border-red-900/50 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
-                        <h3 className="text-xl font-bold mb-2 text-white">Delete Account?</h3>
-                        <p className="text-gray-400 mb-6 text-sm">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
+                        <h3 className="text-xl font-bold mb-2 text-gray-900">Delete Account?</h3>
+                        <p className="text-gray-600 mb-6 text-sm">
                             Are you sure you want to delete your account? This action cannot be undone. All your videos, playlists, and comments will be lost.
                         </p>
                         
                         <div className="flex gap-3">
                             <Button 
                                 onClick={() => setDeletingParams({ ...deletingParams, showModal: false })}
-                                className="flex-1 bg-gray-800 hover:bg-gray-700"
+                                className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-900"
                             >
                                 Cancel
                             </Button>

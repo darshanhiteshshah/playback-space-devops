@@ -216,7 +216,7 @@ function WatchVideo() {
                             />
                         </Link>
                         <div>
-                            <Link to={`/c/${owner.username}`} className="font-semibold block hover:text-purple-400">
+                            <Link to={`/c/${owner.username}`} className="font-semibold block hover:text-blue-400">
                                 {owner.fullName || owner.username}
                             </Link>
                             <span className="text-sm text-gray-400">{channelStats.subscribersCount} subscribers</span>
@@ -237,7 +237,7 @@ function WatchVideo() {
                     <div className="flex items-center gap-2">
                         <button 
                             onClick={handleLike}
-                            className={`flex items-center gap-2 px-4 py-2 rounded-full ${likeState.isLiked ? 'bg-white/20 text-purple-400' : 'bg-gray-800 hover:bg-gray-700'} transition`}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-full ${likeState.isLiked ? 'bg-white/20 text-blue-400' : 'bg-gray-800 hover:bg-gray-700'} transition`}
                         >
                             <ThumbsUp size={20} className={likeState.isLiked ? 'fill-current' : ''} />
                             <span className="font-medium">{likeState.likesCount}</span>
@@ -309,7 +309,7 @@ function WatchVideo() {
                                     </Link>
                                     <div>
                                         <div className="flex items-center gap-2 mb-1">
-                                            <Link to={`/c/${owner.username}`} className="font-semibold text-sm hover:text-purple-400">
+                                            <Link to={`/c/${owner.username}`} className="font-semibold text-sm hover:text-blue-400">
                                                 {owner.username || "User"}
                                             </Link>
                                             <span className="text-xs text-gray-500">{new Date(comment.createdAt).toLocaleDateString()}</span>
@@ -338,10 +338,10 @@ function WatchVideo() {
             {/* Playlist Modal */}
             {showPlaylistModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
                         <button 
                             onClick={() => setShowPlaylistModal(false)}
-                            className="absolute top-4 right-4 text-gray-400 hover:text-white"
+                            className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
                         >
                             <X size={24} />
                         </button>
@@ -361,7 +361,7 @@ function WatchVideo() {
                                         className="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-800 transition flex items-center justify-between group"
                                     >
                                         <span className="font-medium">{playlist.name}</span>
-                                        <span className="text-xs text-gray-500 group-hover:text-purple-400">{playlist.totalVideos} videos</span>
+                                        <span className="text-xs text-gray-500 group-hover:text-blue-400">{playlist.totalVideos} videos</span>
                                     </button>
                                 ))
                             )}
