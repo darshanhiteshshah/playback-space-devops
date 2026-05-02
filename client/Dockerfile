@@ -1,6 +1,5 @@
 # Stage 1: Build the client application
-FROM node:21 AS client-builder
-
+FROM node:20-slim AS client-builder
 # Set the working directory
 WORKDIR /app
 
@@ -14,8 +13,7 @@ RUN npm install
 COPY . .
 
 # Build the application for production
-FROM node:21-slim
-
+FROM node:20-slim
 WORKDIR /app
 
 # Copy the built application from the client-builder stage
