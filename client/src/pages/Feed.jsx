@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../utils/axios';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import VideoCard from '../components/VideoCard';
 import { Loader2 } from 'lucide-react';
@@ -20,7 +20,9 @@ function Feed() {
              try {
                 // If query exists, search
                 const queryParam = query ? `?query=${query}` : '';
-                const response = await axios.get(`${BASE_URL}videos${queryParam}`);
+const response = await axios.get(`${BASE_URL}videos${queryParam}`, {
+  withCredentials: true
+});
                 if (response.data.success) {
                     setVideos(response.data.data.videos);
                 }
