@@ -1,5 +1,5 @@
 # Stage 1: Build & Test
-FROM node:21 AS backend-builder
+FROM node:20 AS backend-builder
 
 # Setup the working dir
 WORKDIR /app
